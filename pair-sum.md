@@ -28,17 +28,18 @@ pairSum([], 1) -> false
 # Brute force Solution
 
 ## Approach: __Nested loops__
-  - The easiest way to approach this problem is by comparing 2 elements at the time
+  - The easiest way to approach this problem is by comparing 2 elements at a time
   - We can use a loop that goes from i=0 to the end of the array - 1
   - We can use  a second loop that goes from j=i+1 to the end of the array
   - If(arr[i] + arr[j]=== target) return true
-  - At the end, if no 2 numbers in the array add up to target   that return false
+  - At the end, if no 2 numbers in the array add up to the target  return false
 
 
 ## Code
 
 ```js
 function pairSum(arr, target) {
+  if (arr.length < 2) return false;
   for (let i = 0; i < arr.length-1; i++) {
       for (let j = i + 1; j < arr.length; j++) {
           if (arr[i] + arr[j] === target) return true;
@@ -73,7 +74,7 @@ And using a while loop, it's possible to add the elements in the given array at 
   2. The sum of the elements is smaller than `target`, `start` is increased by one;
   3. The sum of the elements is greater than `target`, `end` is decreased by one;
 
-The loop should break out when `start` and `end` are equals, meaning all the possible sum for two elements in the array were evaluated. At this point, function can return `false`.
+The loop should break out when `start` and `end` are equals, meaning all the possible sum for two numbers in the array were evaluated. At this point, function can return `false`.
 
 _visualizing the steps_
 ```js
@@ -85,6 +86,7 @@ input: arr = [1,3,4,5] sum = 7
 
                   *   *
 2. interation: [1,3,4,5] -> currentSum = 8 > sum  therefore move end--
+
                   * *
 3. interation: [1,3,4,5] -> currentSum = 7 === sum -> return true
 
@@ -94,9 +96,9 @@ input: arr = [1,3,4,5] sum = 7
 ## Code
 
 ```js
-  function pairSum(arr, sum) {
-     if (arr.length < 2) return false;
-     let start = 0, end = arr.length - 1;
+function pairSum(arr, sum) {
+    if (arr.length < 2) return false;
+    let start = 0, end = arr.length - 1;
 
     while (start !== end) {
         let currSum = arr[start] + arr[end];
@@ -134,7 +136,7 @@ Instead of looking for pairs, it's possible to look for target values, consideri
 
 Using a `map`, we can use an object to store all the target values.
 
-Given that, it's possible to loop over the given array, and for every value on it perform the follow:
+Given that, it's possible to loop over the given array, and for every value on it perform the following:
   - check if the current value is already in the `map`. If so, it means it can be added to a previous element to add up to the `sum` and the function can return `true`;
   - Store the target value for the current element in the `map`.
 
@@ -144,13 +146,15 @@ If the loop breaks out without finding any match, the function returns `false`.
 
 ```js
 function pairSum(arr, sum) {
-  const targetMap = {}
+  const map = {}
+  let complement
+  if (arr.length < 2) return false;
+
   for (let i = 0; i < arr.length; i++) {
-    const target = sum - arr[i]
-    if (targetMap[arr[i]]) {
-      return true
-    } else {
-      targetMap[target] = true
+    if (map[arr[i]]) return true
+    else {
+      target = sum - arr[i]
+      map[target] = true
     }
   }
   return false
