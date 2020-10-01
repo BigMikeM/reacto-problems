@@ -1,5 +1,3 @@
-class: center middle
-
 ## Tree Traversal
 
 ---
@@ -15,7 +13,7 @@ Today you will write a series of iterator functions for trees.
 
 - `depthFirstPostOrder`
 
-Each of these function will take a node of the tree and a callback. The function will iterate through the child nodes, calling the callback function on each of them. The difference between them is the order in which they iterate.
+Each of these function will take a node of the tree and a callback that prints the node value. The function will iterate through the child nodes, calling the callback function on each of them. The difference between them is the order in which they iterate.
 
 ---
 
@@ -28,19 +26,19 @@ function node(value) {
     children: [],
   };
 }
-var a = node('a');
-var b = node('b');
-var c = node('c');
-var d = node('d');
-var e = node('e');
-var f = node('f');
-var g = node('g');
-var h = node('h');
-var i = node('i');
-var j = node('j');
-var k = node('k');
-var l = node('l');
-var m = node('m');
+const a = node('a');
+const b = node('b');
+const c = node('c');
+const d = node('d');
+const e = node('e');
+const f = node('f');
+const g = node('g');
+const h = node('h');
+const i = node('i');
+const j = node('j');
+const k = node('k');
+const l = node('l');
+const m = node('m');
 
 a.children.push(b, c, d);
 b.children.push(e);
