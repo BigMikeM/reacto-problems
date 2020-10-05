@@ -13,7 +13,7 @@ Today you will write a series of iterator functions for trees.
 
 - `depthFirstPostOrder`
 
-Each of these function will take a node of the tree and a callback that prints the node value. The function will iterate through the child nodes, calling the callback function on each of them. The difference between them is the order in which they iterate.
+Each of these function will take a node of the tree and a callback that prints the node value.
 
 ---
 
@@ -76,14 +76,11 @@ class: center middle
 
 - Interviewee does not need to write the "node" function, but should be aware of the structure of a node
 
-- Be sure to have your interviewee sketch an example tree
+- Be sure to have your interviewee sketch the example tree
 
 ---
 
 ### AC
-
-- Push a recursive solution
-
 - Remind them that each child of a tree node is it's own tree
 
 ---
@@ -92,7 +89,6 @@ class: center middle
 
 - If your interviewee finishes, ask them:
   - What is the Big O of the breadth first? Depth first?
-  - Does your answer change if this becomes a binary search tree (max 2 children)?
 
 ---
 
@@ -121,8 +117,9 @@ const breadthFirst = (startingNode, callback) => {
   }
 };
 ```
-
-
+## Complexity
+- Time Complexity: ?
+- Space Complexity: O(n)
 ---
 
 ## Solution Code (Depth First)
@@ -144,14 +141,8 @@ const depthFirstPostOrder = (startingNode, callback) => {
   callback(startingNode.value);
 };
 ```
-
----
-
-## Summary
-
-Big O
-
-- Breadth First: O(n)
-- Depth First: O(n)
+## Complexity
+- Time Complexity: O(n)
+- Space Complexity: O(n)
 
 [Video Solution](https://www.youtube.com/watch?v=4JPG-eRQpzY)
