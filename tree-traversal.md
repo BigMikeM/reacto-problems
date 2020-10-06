@@ -4,8 +4,7 @@
 
 ## Interviewer Prompt
 
-Today you will write a series of iterator functions for trees.
-
+Today we will write:
 - `breadthFirst`
 - `depthFirstPreOrder`
 
@@ -13,7 +12,7 @@ Today you will write a series of iterator functions for trees.
 
 - `depthFirstPostOrder`
 
-Each of these function will take a node of the tree and a callback that prints the node value.
+Each of these functions will take a node and a callback that prints the node value.
 
 ---
 
@@ -144,5 +143,3 @@ const depthFirstPostOrder = (startingNode, callback) => {
 ## Complexity
 - Time Complexity: O(n)
 - Space Complexity: O(n)
-
-[Video Solution](https://www.youtube.com/watch?v=4JPG-eRQpzY)
