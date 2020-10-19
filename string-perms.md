@@ -33,44 +33,7 @@ So one important lesson to take from this exercise: permutations problems will t
 
 ---
 
-The following solution iteratively generates all possible permutations then sorts that result:
-
-```js
-function stringPermutations(str) {
-  let results = [],
-      letters = str.split('');
-
-  results.push([letters.shift()]); //add first letter (as an array) to results
-  while (letters.length) {
-    let curLetter = letters.shift();
-    let tmpResults = [];
-    results.forEach(function(curResult) {
-      for (let i = 0; i <= curResult.length; i++) {
-        let tmp = curResult.slice(); //make copy so we can modify it
-        //insert the letter at the current position
-        tmp.splice(i, 0, curLetter);
-        tmpResults.push(tmp);
-      }
-    });
-    results = tmpResults; //overwrite the previous results
-  }
-  return results
-    .map(function(letterArr) {
-      return letterArr.join('');
-    })
-    .filter(function(el, index, self) {
-      return self.indexOf(el) === index; //filter out non-unique words
-    })
-    .sort();
-}
-```
-
----
-
-Here is a recursive solution that implicitly keeps the results sorted as it generates them (an optimization):
-
-Without sorting before we start finding permutations, we will get n! _ log(n!) -- we have an array that is n! in length at that point. If we sort before our sort time is n _ log(n). In both situations, n is the length of the input string. Overall, finding all string permutations is n!
-
+Here is a recursive solution that implicitly keeps the results sorted as it generates them.
 ---
 
 ```js
@@ -107,3 +70,40 @@ function sortedStringPermutations(str) {
 }
 sortedStringPermutations("cat")
 ```
+
+
+---
+
+The following solution iteratively generates all possible permutations then sorts that result.
+
+```js
+function stringPermutations(str) {
+  let results = [],
+      letters = str.split('');
+
+  results.push([letters.shift()]); //add first letter (as an array) to results
+  while (letters.length) {
+    let curLetter = letters.shift();
+    let tmpResults = [];
+    results.forEach(function(curResult) {
+      for (let i = 0; i <= curResult.length; i++) {
+        let tmp = curResult.slice(); //make copy so we can modify it
+        //insert the letter at the current position
+        tmp.splice(i, 0, curLetter);
+        tmpResults.push(tmp);
+      }
+    });
+    results = tmpResults; //overwrite the previous results
+  }
+  return results
+    .map(function(letterArr) {
+      return letterArr.join('');
+    })
+    .filter(function(el, index, self) {
+      return self.indexOf(el) === index; //filter out non-unique words
+    })
+    .sort();
+}
+```
+
+ Overall, finding all string permutations is n!
